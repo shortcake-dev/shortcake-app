@@ -11,4 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
+      - run: flutter config --no-analytics
       - run: flutter test --reporter expanded
