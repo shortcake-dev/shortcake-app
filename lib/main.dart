@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'homepage/homepage.dart';
+
 void main() {
   runApp(ShortcakeApp());
 }
@@ -7,20 +9,6 @@ void main() {
 class ShortcakeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Shortcake',
-      home: ShortcakeHomePage()
-    );
-  }
-}
-
-class ShortcakeHomePage extends StatelessWidget {
-  ShortcakeHomePage(): super();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Text('Shortcake')
-    );
+    return MaterialApp(title: 'Shortcake', home: ShortcakeHomepage());
   }
 }
