@@ -1,7 +1,8 @@
 name: shortcake_app
-description: A new Flutter application.
-publish_to: 'none'
-version: 1.0.0+1
+description: Shortcake frontend
+version: 0.0.1
+homepage: https://github.com/shortcake-dev/shortcake-app
+publish_to: none
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
