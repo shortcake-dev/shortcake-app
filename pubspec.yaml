@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shortcake: ^0.0.2-nullsafety
 
 dev_dependencies:
   flutter_test:
