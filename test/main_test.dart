@@ -3,6 +3,6 @@ import 'package:shortcake_app/main.dart';
 
 void main() {
   testWidgets('App builds', (WidgetTester tester) async {
-    await tester.pumpWidget(ShortcakeApp());
+    await tester.pumpWidget(ShortcakeClient());
   });
 }
