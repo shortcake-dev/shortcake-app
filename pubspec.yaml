@@ -10,11 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shortcake: ^0.0.2-nullsafety
+  shortcake: ^0.0.3-nullsafety
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mocktail: ^0.1.1
 
 flutter:
   uses-material-design: true
