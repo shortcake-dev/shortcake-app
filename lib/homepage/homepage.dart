@@ -20,7 +20,7 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
               return Text('none');
             case ConnectionState.active:
             case ConnectionState.waiting:
-              return Text('active/waiting');
+              return Text('loading');
             case ConnectionState.done:
               return Text(snapshot.data.toString());
             default:
