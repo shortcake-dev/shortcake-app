@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:graphql/client.dart';
 import 'package:provider/provider.dart';
 import 'package:shortcake/shortcake.dart';
 
@@ -9,11 +10,21 @@ class ShortcakeHomepage extends StatefulWidget {
 }
 
 class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
+  late Future<QueryResult> _introspectionFuture;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final shortcakeApi = Provider.of<ShortcakeApi>(context, listen: false);
+    _introspectionFuture = shortcakeApi.introspect();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: Provider.of<ShortcakeApi>(context, listen: false).introspect(),
+        future: _introspectionFuture,
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
