@@ -26,13 +26,18 @@ class TestHomepage extends StatelessWidget {
 
 void main() {
   group("Homepage widget", () {
-    final mockApi = MockApi();
+    late MockApi mockApi;
+    late QueryResult result;
+
+    setUpAll(() async {
+      mockApi = MockApi();
+
+      result = QueryResult.optimistic(data: {"some_field": 1234});
+      when(() => mockApi.introspect()).thenAnswer((_) async => result);
+    });
 
     testWidgets('starts by displaying "loading"', (tester) async {
       var widget = TestHomepage(mockApi);
-
-      var result = QueryResult.optimistic(data: {"some_field": 1234});
-      when(() => mockApi.introspect()).thenAnswer((_) async => result);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
@@ -40,11 +45,8 @@ void main() {
       expect(find.text('loading'), findsOneWidget);
     });
 
-    testWidgets('loads and displays results', (tester) async {
+    testWidgets('then loads and displays results', (tester) async {
       var widget = TestHomepage(mockApi);
-
-      var result = QueryResult.optimistic(data: {"some_field": 1234});
-      when(() => mockApi.introspect()).thenAnswer((_) async => result);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
