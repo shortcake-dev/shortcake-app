@@ -12,11 +12,16 @@ dependencies:
     sdk: flutter
   shortcake: ^0.0.3-nullsafety
   provider: ^5.0.0
+  ferry: ^0.10.1-0.1.nullsafety.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^0.1.1
+
+  # For ferry
+  ferry_generator: ^0.4.1-0.1.nullsafety.0
+  build_runner: ^1.12.2
 
 flutter:
   uses-material-design: true
