@@ -1,0 +1,32 @@
+type Ingredient {
+    id: ID!
+    name: String!
+}
+
+type Query {
+    recipe(id: ID!): Recipe!
+    recipes: [Recipe!]!
+    ingredient(id: ID!): Ingredient!
+    ingredients: [Ingredient!]!
+}
+
+type Recipe {
+    id: ID!
+    name: String!
+    description: String
+    ingredients: [RecipeIngredient!]!
+    steps: [RecipeStep!]!
+}
+
+type RecipeIngredient {
+    recipe: Recipe!
+    ingredient: Ingredient!
+    measurement: String!
+    modifier: String
+}
+
+type RecipeStep {
+    recipe: Recipe!
+    stepIndex: Int!
+    text: String!
+}

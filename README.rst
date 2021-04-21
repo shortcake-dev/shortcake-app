@@ -20,7 +20,12 @@ Codegen
 This project uses Ferry_ for strongly-typed GraphQL Dart requests and objects. Unfortunately, it
 requires codegen to function.
 
-1. First, you need to get the GraphQL schema. (This process *really* needs to be improved. See #???)
+The codegen requires the GraphQL schema (that's used in the backend). The current version of the
+schema the client is built against is located at :code:`bin/src/graphql/schema.graphql`. (In the
+future, this may removed in lieu of a better process. Steps 1 and 2 below are optional unless the
+upstream schema has been updated.
+
+1. Get the GraphQL schema.
 
    .. code-block:: bash
 
