@@ -13,5 +13,5 @@ jobs:
       - uses: subosito/flutter-action@v1
       - run: flutter config --no-analytics
       - run: flutter pub get
-      - run: flutter pub build_runner build
+      - run: flutter pub run build_runner build
       - run: flutter test --reporter expanded
