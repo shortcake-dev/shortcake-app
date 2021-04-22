@@ -44,11 +44,12 @@ void main() {
           )),
       );
 
-      when(() => mockApi.request(req))
-          .thenAnswer((_) => Stream.value(OperationResponse(
-                operationRequest: req,
-                data: result,
-              )));
+      when(() => mockApi.request(req)).thenAnswer(
+        (_) => Stream.value(OperationResponse(
+          operationRequest: req,
+          data: result,
+        )),
+      );
     });
 
     testWidgets('starts by displaying "loading"', (tester) async {
