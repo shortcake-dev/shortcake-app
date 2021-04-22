@@ -1,0 +1,14 @@
+query AllRecipes {
+    recipes {
+        name,
+        description,
+        steps {
+            text
+        },
+        ingredients {
+            ingredient {
+                name
+            }
+        }
+    }
+}

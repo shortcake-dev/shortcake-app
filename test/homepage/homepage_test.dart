@@ -1,10 +1,15 @@
+import 'package:ferry_exec/ferry_exec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:graphql/client.dart';
+import 'package:gql_link/gql_link.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake/shortcake.dart';
+import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/graphql/api_client.dart';
 import 'package:shortcake_app/homepage/homepage.dart';
+
+class MockLink extends Mock implements Link {}
 
 class MockApi extends Mock implements ShortcakeApi {}
 
@@ -27,13 +32,24 @@ class TestHomepage extends StatelessWidget {
 void main() {
   group("Homepage widget", () {
     late MockApi mockApi;
-    late QueryResult result;
+    late GAllRecipesData result;
 
     setUpAll(() async {
       mockApi = MockApi();
+      final req = GAllRecipesReq();
+      result = GAllRecipesData(
+        (b) => b
+          ..recipes.add(GAllRecipesData_recipes(
+            (c) => c..name = "Some recipe",
+          )),
+      );
 
-      result = QueryResult.optimistic(data: {"some_field": 1234});
-      when(() => mockApi.introspect()).thenAnswer((_) async => result);
+      when(() => mockApi.request(req)).thenAnswer(
+        (_) => Stream.value(OperationResponse(
+          operationRequest: req,
+          data: result,
+        )),
+      );
     });
 
     testWidgets('starts by displaying "loading"', (tester) async {
@@ -52,7 +68,7 @@ void main() {
       await tester.pumpWidget(widget);
       await tester.pumpAndSettle();
 
-      expect(find.text(result.toString()), findsOneWidget);
+      expect(find.text(result.recipes.toString()), findsOneWidget);
     });
   });
 }

@@ -39,3 +39,7 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# Ferry generated code
+*.gql.dart
+*.gql.g.dart

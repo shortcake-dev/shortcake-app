@@ -1,8 +1,12 @@
+import 'package:ferry/ferry.dart';
+import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:graphql/client.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake/shortcake.dart';
+import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/graphql/all_recipes.var.gql.dart';
+import 'package:shortcake_app/graphql/api_client.dart';
 
 class ShortcakeHomepage extends StatefulWidget {
   @override
@@ -10,33 +14,29 @@ class ShortcakeHomepage extends StatefulWidget {
 }
 
 class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
-  late Future<QueryResult> _introspectionFuture;
-
-  @override
-  void initState() {
-    super.initState();
-
-    final shortcakeApi = Provider.of<ShortcakeApi>(context, listen: false);
-    _introspectionFuture = shortcakeApi.introspect();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: _introspectionFuture,
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              return Text('none');
-            case ConnectionState.active:
-            case ConnectionState.waiting:
-              return Text('loading');
-            case ConnectionState.done:
-              return Text(snapshot.data.toString());
-            default:
-              return Text('default');
+      body: Operation(
+        client: Provider.of<ShortcakeApi>(context, listen: false),
+        operationRequest: GAllRecipesReq(),
+        builder: (
+          BuildContext context,
+          OperationResponse<GAllRecipesData, GAllRecipesVars>? response,
+          Object? error, // TODO: When is this not null?
+        ) {
+          if (response == null) {
+            return Text("response is null");
+          } else if (response.linkException != null) {
+            return Text(response.linkException.toString());
+          } else if (response.graphqlErrors != null) {
+            return Text(response.graphqlErrors.toString());
+          } else if (response.loading) {
+            return Text("loading");
           }
+
+          final recipes = response.data?.recipes;
+          return Text(recipes.toString());
         },
       ),
     );
