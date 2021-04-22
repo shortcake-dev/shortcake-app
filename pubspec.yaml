@@ -10,9 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shortcake: ^0.0.3-nullsafety
   provider: ^5.0.0
   ferry: ^0.10.1-0.1.nullsafety.0
+  ferry_flutter: ^0.5.1-0.1.nullsafety.0
+  gql_http_link: ^0.4.0-nullsafety.1
 
 dev_dependencies:
   flutter_test:
