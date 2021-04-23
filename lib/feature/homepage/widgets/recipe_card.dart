@@ -13,10 +13,10 @@ class RecipeCard extends StatelessWidget {
         Text(recipe.name),
         if (recipe.description != null) Text(recipe.description!),
         Text('[Ingredients]'),
-        for (var ingredient in recipe.ingredients)
+        for (final ingredient in recipe.ingredients)
           Text(ingredient.ingredient.name),
         Text('[Steps]'),
-        for (var step in recipe.steps) Text(step.text),
+        for (final step in recipe.steps) Text(step.text),
         Text(''),
       ],
     );

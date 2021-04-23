@@ -53,7 +53,7 @@ void main() {
     });
 
     testWidgets('starts by displaying "loading"', (tester) async {
-      var widget = TestHomepage(mockApi);
+      final widget = TestHomepage(mockApi);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
@@ -62,7 +62,7 @@ void main() {
     });
 
     testWidgets('then loads and displays results', (tester) async {
-      var widget = TestHomepage(mockApi);
+      final widget = TestHomepage(mockApi);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);

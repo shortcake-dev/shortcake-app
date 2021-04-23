@@ -23,7 +23,7 @@ void main() {
     testWidgets('displays recipe title', (tester) async {
       final recipe = GAllRecipesData_recipes((b) => b..name = recipeName);
 
-      var widget = TestRecipeCard(recipe);
+      final widget = TestRecipeCard(recipe);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
@@ -36,7 +36,7 @@ void main() {
         ..name = recipeName
         ..description = recipeDescription);
 
-      var widget = TestRecipeCard(recipe);
+      final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
 
       expect(find.text(recipeDescription), findsOneWidget);
@@ -50,11 +50,11 @@ void main() {
               (c) => c..ingredient.name = ingredient),
         )));
 
-      var widget = TestRecipeCard(recipe);
+      final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
 
       expect(find.text("[Ingredients]"), findsOneWidget);
-      for (var ingredient in ingredientNames) {
+      for (final ingredient in ingredientNames) {
         expect(find.text(ingredient), findsOneWidget);
       }
     });
@@ -66,11 +66,11 @@ void main() {
           (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
         )));
 
-      var widget = TestRecipeCard(recipe);
+      final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
 
       expect(find.text("[Steps]"), findsOneWidget);
-      for (var step in steps) {
+      for (final step in steps) {
         expect(find.text(step), findsOneWidget);
       }
     });
