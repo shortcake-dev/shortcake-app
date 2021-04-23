@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
-import 'package:shortcake_app/homepage/homepage.dart';
+import 'package:shortcake_app/feature/homepage/homepage.dart';
 
 void main() {
   runApp(ShortcakeClient());

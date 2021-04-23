@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
 import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
-import 'package:shortcake_app/homepage/homepage.dart';
+import 'package:shortcake_app/feature/homepage/homepage.dart';
 
 class MockLink extends Mock implements Link {}
 
@@ -68,7 +68,7 @@ void main() {
       await tester.pumpWidget(widget);
       await tester.pumpAndSettle();
 
-      expect(find.text(result.recipes.toString()), findsOneWidget);
+      expect(find.text(result.recipes[0].name), findsOneWidget);
     });
   });
 }
