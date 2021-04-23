@@ -1,11 +1,13 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
-import 'package:shortcake_app/graphql/all_recipes.var.gql.dart';
+import 'package:shortcake_app/feature/homepage/widgets/recipe_card.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.var.gql.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
 class ShortcakeHomepage extends StatefulWidget {
@@ -35,8 +37,11 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
             return Text("loading");
           }
 
-          final recipes = response.data?.recipes;
-          return Text(recipes.toString());
+          final recipes = response.data?.recipes ?? BuiltList();
+
+          return ListView(
+            children: recipes.map((recipe) => RecipeCard(recipe)).toList(),
+          );
         },
       ),
     );

@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gql_link/gql_link.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/feature/homepage/homepage.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
-import 'package:shortcake_app/homepage/homepage.dart';
 
 class MockLink extends Mock implements Link {}
 
@@ -53,7 +53,7 @@ void main() {
     });
 
     testWidgets('starts by displaying "loading"', (tester) async {
-      var widget = TestHomepage(mockApi);
+      final widget = TestHomepage(mockApi);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
@@ -62,13 +62,13 @@ void main() {
     });
 
     testWidgets('then loads and displays results', (tester) async {
-      var widget = TestHomepage(mockApi);
+      final widget = TestHomepage(mockApi);
 
       // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
       await tester.pumpAndSettle();
 
-      expect(find.text(result.recipes.toString()), findsOneWidget);
+      expect(find.text(result.recipes[0].name), findsOneWidget);
     });
   });
 }
