@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gql_link/gql_link.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
-import 'package:shortcake_app/graphql/api_client.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.req.gql.dart';
 import 'package:shortcake_app/feature/homepage/homepage.dart';
+import 'package:shortcake_app/graphql/api_client.dart';
 
 class MockLink extends Mock implements Link {}
 

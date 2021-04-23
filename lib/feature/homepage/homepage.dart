@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shortcake_app/feature/homepage/widgets/recipe_card.dart';
-import 'package:shortcake_app/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/graphql/all_recipes.req.gql.dart';
-import 'package:shortcake_app/graphql/all_recipes.var.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/all_recipes.var.gql.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
 class ShortcakeHomepage extends StatefulWidget {
