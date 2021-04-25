@@ -35,7 +35,7 @@ class RecipeStepList extends StatelessWidget {
       children: [
         for (final entry in steps.asMap().entries)
           ListTile(
-            leading: Text("${entry.key}"),
+            leading: Text("${entry.key + 1}"),
             title: Text(entry.value.text),
           )
       ],

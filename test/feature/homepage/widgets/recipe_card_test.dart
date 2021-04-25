@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,7 +10,17 @@ class TestRecipeCard extends RecipeCard {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: super.build(context));
+    return MaterialApp(home: Material(child: super.build(context)));
+  }
+}
+
+class TestRecipeStepList extends RecipeStepList {
+  TestRecipeStepList(BuiltList<GAllRecipesData_recipes_steps> steps)
+      : super(steps);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Material(child: super.build(context)));
   }
 }
 
@@ -70,8 +81,38 @@ void main() {
       await tester.pumpWidget(widget);
 
       expect(find.text("[Steps]"), findsOneWidget);
+      expect(find.byType(RecipeStepList), findsOneWidget);
+    });
+  });
+
+  group("RecipeStepList widget", () {
+    final steps = ["Get bread", "spread peanut butter", "add banana"];
+
+    testWidgets('contains recipe steps', (tester) async {
+      final recipeSteps =
+          BuiltList<GAllRecipesData_recipes_steps>.from(steps.map(
+        (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
+      ));
+
+      final widget = TestRecipeStepList(recipeSteps);
+      await tester.pumpWidget(widget);
+
       for (final step in steps) {
         expect(find.text(step), findsOneWidget);
+      }
+    });
+
+    testWidgets('has indices for each step, indexing at 1', (tester) async {
+      final recipeSteps =
+          BuiltList<GAllRecipesData_recipes_steps>.from(steps.map(
+        (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
+      ));
+
+      final widget = TestRecipeStepList(recipeSteps);
+      await tester.pumpWidget(widget);
+
+      for (var i = 1; i < steps.length + 1; i++) {
+        expect(find.text(i.toString()), findsOneWidget);
       }
     });
   });
