@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
 
@@ -16,8 +17,27 @@ class RecipeCard extends StatelessWidget {
         for (final ingredient in recipe.ingredients)
           Text(ingredient.ingredient.name),
         Text('[Steps]'),
-        for (final step in recipe.steps) Text(step.text),
+        RecipeStepList(recipe.steps),
         Text(''),
+      ],
+    );
+  }
+}
+
+class RecipeStepList extends StatelessWidget {
+  final BuiltList<GAllRecipesData_recipes_steps> steps;
+
+  RecipeStepList(this.steps);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        for (var i = 0; i < steps.length; i++)
+          ListTile(
+            leading: Text("${i + 1}"),
+            title: Text(steps[i].text),
+          )
       ],
     );
   }
