@@ -86,14 +86,16 @@ void main() {
   });
 
   group("RecipeStepList widget", () {
+    late final BuiltList<GAllRecipesData_recipes_steps> recipeSteps;
     final steps = ["get bread", "spread peanut butter", "add banana"];
 
-    testWidgets('contains recipe steps', (tester) async {
-      final recipeSteps =
-          BuiltList<GAllRecipesData_recipes_steps>.from(steps.map(
+    setUpAll(() {
+      recipeSteps = BuiltList.from(steps.map(
         (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
       ));
+    });
 
+    testWidgets('contains recipe steps', (tester) async {
       final widget = TestRecipeStepList(recipeSteps);
       await tester.pumpWidget(widget);
 
@@ -103,11 +105,6 @@ void main() {
     });
 
     testWidgets('has indices for each step, indexing at 1', (tester) async {
-      final recipeSteps =
-          BuiltList<GAllRecipesData_recipes_steps>.from(steps.map(
-        (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
-      ));
-
       final widget = TestRecipeStepList(recipeSteps);
       await tester.pumpWidget(widget);
 
