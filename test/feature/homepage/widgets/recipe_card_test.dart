@@ -86,7 +86,7 @@ void main() {
   });
 
   group("RecipeStepList widget", () {
-    final steps = ["Get bread", "spread peanut butter", "add banana"];
+    final steps = ["get bread", "spread peanut butter", "add banana"];
 
     testWidgets('contains recipe steps', (tester) async {
       final recipeSteps =
