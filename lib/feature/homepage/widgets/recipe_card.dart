@@ -33,10 +33,10 @@ class RecipeStepList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (final entry in steps.asMap().entries)
+        for (var i = 0; i < steps.length; i++)
           ListTile(
-            leading: Text("${entry.key + 1}"),
-            title: Text(entry.value.text),
+            leading: Text("${i + 1}"),
+            title: Text(steps[i].text),
           )
       ],
     );
