@@ -14,8 +14,7 @@ class RecipeCard extends StatelessWidget {
         Text(recipe.name),
         if (recipe.description != null) Text(recipe.description!),
         Text('[Ingredients]'),
-        for (final ingredient in recipe.ingredients)
-          Text(ingredient.ingredient.name),
+        RecipeIngredientList(recipe.ingredients),
         Text('[Steps]'),
         RecipeStepList(recipe.steps),
         Text(''),
@@ -39,6 +38,24 @@ class RecipeStepList extends StatelessWidget {
             title: Text(steps[i].text),
           )
       ],
+    );
+  }
+}
+
+class RecipeIngredientList extends StatelessWidget {
+  final BuiltList<GAllRecipesData_recipes_ingredients> ingredients;
+
+  RecipeIngredientList(this.ingredients);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: ingredients
+          .map((ingredient) => ListTile(
+                leading: Text(ingredient.measurement),
+                title: Text(ingredient.ingredient.name),
+              ))
+          .toList(),
     );
   }
 }
