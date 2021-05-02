@@ -1,0 +1,6 @@
+query RecipeSummaries {
+    recipes {
+        name
+        description
+    }
+}

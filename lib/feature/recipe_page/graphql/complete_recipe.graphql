@@ -1,14 +1,14 @@
-query AllRecipes {
-    recipes {
-        name,
-        description,
+query CompleteRecipe($recipe_id: ID!) {
+    recipe(id: $recipe_id) {
+        name
+        description
         steps {
             text
-        },
+        }
         ingredients {
             ingredient {
                 name
-            },
+            }
             measurement
         }
     }

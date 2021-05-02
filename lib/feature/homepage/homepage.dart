@@ -4,10 +4,9 @@ import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake_app/feature/homepage/widgets/recipe_card.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.req.gql.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.var.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.data.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.req.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.var.gql.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
 class ShortcakeHomepage extends StatefulWidget {
@@ -21,10 +20,10 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
     return Scaffold(
       body: Operation(
         client: Provider.of<ShortcakeApi>(context, listen: false),
-        operationRequest: GAllRecipesReq(),
+        operationRequest: GRecipeSummariesReq(),
         builder: (
           BuildContext context,
-          OperationResponse<GAllRecipesData, GAllRecipesVars>? response,
+          OperationResponse<GRecipeSummariesData, GRecipeSummariesVars>? response,
           Object? error, // TODO: When is this not null?
         ) {
           if (response == null) {
@@ -40,7 +39,7 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
           final recipes = response.data?.recipes ?? BuiltList();
 
           return ListView(
-            children: recipes.map((recipe) => RecipeCard(recipe)).toList(),
+            children: recipes.map((recipe) => Text(recipe.name)).toList(),
           );
         },
       ),
