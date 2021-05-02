@@ -8,7 +8,8 @@ query AllRecipes {
         ingredients {
             ingredient {
                 name
-            }
+            },
+            measurement
         }
     }
 }

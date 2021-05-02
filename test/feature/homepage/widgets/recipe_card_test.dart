@@ -24,19 +24,29 @@ class TestRecipeStepList extends RecipeStepList {
   }
 }
 
+class TestRecipeIngredientList extends RecipeIngredientList {
+  TestRecipeIngredientList(
+      BuiltList<GAllRecipesData_recipes_ingredients> ingredients)
+      : super(ingredients);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Material(child: super.build(context)));
+  }
+}
+
 void main() {
   group("RecipeCard widget", () {
     final recipeName = "Raw oats";
     final recipeDescription = "Literally just oats";
     final ingredientNames = ["oats", "bowl"];
+    final measurements = ["1 cup", "1"];
     final steps = ["Get bowl", "Pour oats", "Consume"];
 
     testWidgets('displays recipe title', (tester) async {
       final recipe = GAllRecipesData_recipes((b) => b..name = recipeName);
 
       final widget = TestRecipeCard(recipe);
-
-      // One pump builds widget with uncompleted Future
       await tester.pumpWidget(widget);
 
       expect(find.text(recipeName), findsOneWidget);
@@ -56,18 +66,18 @@ void main() {
     testWidgets('displays recipe ingredients', (tester) async {
       final recipe = GAllRecipesData_recipes((b) => b
         ..name = recipeName
-        ..ingredients.addAll(ingredientNames.map(
-          (ingredient) => GAllRecipesData_recipes_ingredients(
-              (c) => c..ingredient.name = ingredient),
+        ..ingredients.addAll(List.generate(
+          ingredientNames.length,
+          (i) => GAllRecipesData_recipes_ingredients((c) => c
+            ..ingredient.name = ingredientNames[i]
+            ..measurement = measurements[i]),
         )));
 
       final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
 
       expect(find.text("[Ingredients]"), findsOneWidget);
-      for (final ingredient in ingredientNames) {
-        expect(find.text(ingredient), findsOneWidget);
-      }
+      expect(find.byType(RecipeIngredientList), findsOneWidget);
     });
 
     testWidgets('displays recipe steps', (tester) async {
@@ -82,6 +92,39 @@ void main() {
 
       expect(find.text("[Steps]"), findsOneWidget);
       expect(find.byType(RecipeStepList), findsOneWidget);
+    });
+  });
+
+  group("RecipeIngredientList widget", () {
+    late final BuiltList<GAllRecipesData_recipes_ingredients> recipeIngredients;
+    final ingredients = ["bananas", "chocolate soylent", "oats", "ice cubes"];
+    final measurements = ["2", "2 scoops", "1/4 cup", "1 cup"];
+
+    setUpAll(() {
+      recipeIngredients = BuiltList.from([
+        for (var i = 0; i < ingredients.length; i++)
+          GAllRecipesData_recipes_ingredients((b) => b
+            ..ingredient.name = ingredients[i]
+            ..measurement = measurements[i])
+      ]);
+    });
+
+    testWidgets('contains recipe ingredients', (tester) async {
+      final widget = TestRecipeIngredientList(recipeIngredients);
+      await tester.pumpWidget(widget);
+
+      for (final ingredient in ingredients) {
+        expect(find.text(ingredient), findsOneWidget);
+      }
+    });
+
+    testWidgets('contains recipe measurements', (tester) async {
+      final widget = TestRecipeIngredientList(recipeIngredients);
+      await tester.pumpWidget(widget);
+
+      for (final measurement in measurements) {
+        expect(find.text(measurement), findsOneWidget);
+      }
     });
   });
 
