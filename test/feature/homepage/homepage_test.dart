@@ -30,7 +30,7 @@ class TestHomepage extends StatelessWidget {
 }
 
 void main() {
-  group("Homepage widget", () {
+  group('Homepage widget', () {
     late MockApi mockApi;
     late GAllRecipesData result;
 
@@ -40,7 +40,7 @@ void main() {
       result = GAllRecipesData(
         (b) => b
           ..recipes.add(GAllRecipesData_recipes(
-            (c) => c..name = "Some recipe",
+            (c) => c..name = 'Some recipe',
           )),
       );
 

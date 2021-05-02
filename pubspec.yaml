@@ -17,6 +17,7 @@ dependencies:
   built_collection: ^5.0.0
 
 dev_dependencies:
+  pedantic: ^1.11.0
   flutter_test:
     sdk: flutter
   mocktail: ^0.1.1

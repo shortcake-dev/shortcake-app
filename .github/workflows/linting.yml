@@ -15,3 +15,12 @@ jobs:
       - run: flutter pub get
       - run: flutter pub run build_runner build
       - run: flutter format --dry-run --set-exit-if-changed .
+  flutter-analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+      - run: flutter config --no-analytics
+      - run: flutter pub get
+      - run: flutter pub run build_runner build
+      - run: flutter analyze
