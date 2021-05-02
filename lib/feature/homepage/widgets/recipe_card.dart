@@ -34,7 +34,7 @@ class RecipeStepList extends StatelessWidget {
       children: [
         for (var i = 0; i < steps.length; i++)
           ListTile(
-            leading: Text("${i + 1}"),
+            leading: Text('${i + 1}'),
             title: Text(steps[i].text),
           )
       ],

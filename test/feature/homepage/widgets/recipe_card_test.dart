@@ -36,12 +36,12 @@ class TestRecipeIngredientList extends RecipeIngredientList {
 }
 
 void main() {
-  group("RecipeCard widget", () {
-    const recipeName = "Raw oats";
-    const recipeDescription = "Literally just oats";
-    const ingredientNames = ["oats", "bowl"];
-    const measurements = ["1 cup", "1"];
-    const steps = ["Get bowl", "Pour oats", "Consume"];
+  group('RecipeCard widget', () {
+    const recipeName = 'Raw oats';
+    const recipeDescription = 'Literally just oats';
+    const ingredientNames = ['oats', 'bowl'];
+    const measurements = ['1 cup', '1'];
+    const steps = ['Get bowl', 'Pour oats', 'Consume'];
 
     testWidgets('displays recipe title', (tester) async {
       final recipe = GAllRecipesData_recipes((b) => b..name = recipeName);
@@ -76,7 +76,7 @@ void main() {
       final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
 
-      expect(find.text("[Ingredients]"), findsOneWidget);
+      expect(find.text('[Ingredients]'), findsOneWidget);
       expect(find.byType(RecipeIngredientList), findsOneWidget);
     });
 
@@ -90,15 +90,15 @@ void main() {
       final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
 
-      expect(find.text("[Steps]"), findsOneWidget);
+      expect(find.text('[Steps]'), findsOneWidget);
       expect(find.byType(RecipeStepList), findsOneWidget);
     });
   });
 
-  group("RecipeIngredientList widget", () {
+  group('RecipeIngredientList widget', () {
     late final BuiltList<GAllRecipesData_recipes_ingredients> recipeIngredients;
-    const ingredients = ["bananas", "chocolate soylent", "oats", "ice cubes"];
-    const measurements = ["2", "2 scoops", "1/4 cup", "1 cup"];
+    const ingredients = ['bananas', 'chocolate soylent', 'oats', 'ice cubes'];
+    const measurements = ['2', '2 scoops', '1/4 cup', '1 cup'];
 
     setUpAll(() {
       recipeIngredients = BuiltList.from([
@@ -128,9 +128,9 @@ void main() {
     });
   });
 
-  group("RecipeStepList widget", () {
+  group('RecipeStepList widget', () {
     late final BuiltList<GAllRecipesData_recipes_steps> recipeSteps;
-    final steps = ["get bread", "spread peanut butter", "add banana"];
+    final steps = ['get bread', 'spread peanut butter', 'add banana'];
 
     setUpAll(() {
       recipeSteps = BuiltList.from(steps.map(

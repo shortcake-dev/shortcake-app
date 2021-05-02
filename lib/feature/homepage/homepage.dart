@@ -28,13 +28,13 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
           Object? error, // TODO: When is this not null?
         ) {
           if (response == null) {
-            return Text("response is null");
+            return Text('response is null');
           } else if (response.linkException != null) {
             return Text(response.linkException.toString());
           } else if (response.graphqlErrors != null) {
             return Text(response.graphqlErrors.toString());
           } else if (response.loading) {
-            return Text("loading");
+            return Text('loading');
           }
 
           final recipes = response.data?.recipes ?? BuiltList();
