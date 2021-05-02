@@ -37,11 +37,11 @@ class TestRecipeIngredientList extends RecipeIngredientList {
 
 void main() {
   group("RecipeCard widget", () {
-    final recipeName = "Raw oats";
-    final recipeDescription = "Literally just oats";
-    final ingredientNames = ["oats", "bowl"];
-    final measurements = ["1 cup", "1"];
-    final steps = ["Get bowl", "Pour oats", "Consume"];
+    const recipeName = "Raw oats";
+    const recipeDescription = "Literally just oats";
+    const ingredientNames = ["oats", "bowl"];
+    const measurements = ["1 cup", "1"];
+    const steps = ["Get bowl", "Pour oats", "Consume"];
 
     testWidgets('displays recipe title', (tester) async {
       final recipe = GAllRecipesData_recipes((b) => b..name = recipeName);
@@ -97,8 +97,8 @@ void main() {
 
   group("RecipeIngredientList widget", () {
     late final BuiltList<GAllRecipesData_recipes_ingredients> recipeIngredients;
-    final ingredients = ["bananas", "chocolate soylent", "oats", "ice cubes"];
-    final measurements = ["2", "2 scoops", "1/4 cup", "1 cup"];
+    const ingredients = ["bananas", "chocolate soylent", "oats", "ice cubes"];
+    const measurements = ["2", "2 scoops", "1/4 cup", "1 cup"];
 
     setUpAll(() {
       recipeIngredients = BuiltList.from([
