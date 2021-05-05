@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.data.gql.dart';
 import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.req.gql.dart';
 import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.var.gql.dart';
+import 'package:shortcake_app/feature/homepage/widgets/recipe_blurb.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
 class ShortcakeHomepage extends StatefulWidget {
@@ -23,7 +24,8 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
         operationRequest: GRecipeSummariesReq(),
         builder: (
           BuildContext context,
-          OperationResponse<GRecipeSummariesData, GRecipeSummariesVars>? response,
+          OperationResponse<GRecipeSummariesData, GRecipeSummariesVars>?
+              response,
           Object? error, // TODO: When is this not null?
         ) {
           if (response == null) {
@@ -39,7 +41,7 @@ class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
           final recipes = response.data?.recipes ?? BuiltList();
 
           return ListView(
-            children: recipes.map((recipe) => Text(recipe.name)).toList(),
+            children: recipes.map((recipe) => RecipeBlurb(recipe)).toList(),
           );
         },
       ),
