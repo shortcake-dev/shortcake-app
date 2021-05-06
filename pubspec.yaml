@@ -11,10 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0
+
+  # GraphQL
   ferry: ^0.10.1-0.1.nullsafety.0
   ferry_flutter: ^0.5.1-0.1.nullsafety.0
   gql_http_link: ^0.4.0-nullsafety.1
   built_collection: ^5.0.0
+
+  # Page navigation
+  beamer: ^0.12.4
 
 dev_dependencies:
   pedantic: ^1.11.0
