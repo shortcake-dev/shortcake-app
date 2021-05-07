@@ -40,8 +40,10 @@ void main() {
       result = GRecipeSummariesData(
         (b) => b
           ..recipes.add(GRecipeSummariesData_recipes(
-            (c) => c..name = 'Some recipe',
-          )),
+            (c) => c
+              ..name = 'Some recipe'
+              ..id = 'Some id',
+          ),),
       );
 
       when(() => mockApi.request(req)).thenAnswer(
