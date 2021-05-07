@@ -43,7 +43,7 @@ void main() {
             (c) => c
               ..name = 'Some recipe'
               ..id = 'Some id',
-          ),),
+          )),
       );
 
       when(() => mockApi.request(req)).thenAnswer(

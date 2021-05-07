@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shortcake_app/feature/recipe_page/graphql/complete_recipe.data.gql.dart';
 import 'package:shortcake_app/feature/recipe_page/widgets/recipe_card.dart';
 
-
 class TestRecipeCard extends RecipeCard {
   TestRecipeCard(GCompleteRecipeData_recipe recipe) : super(recipe);
 
@@ -97,7 +96,8 @@ void main() {
   });
 
   group('RecipeIngredientList widget', () {
-    late final BuiltList<GCompleteRecipeData_recipe_ingredients> recipeIngredients;
+    late final BuiltList<GCompleteRecipeData_recipe_ingredients>
+        recipeIngredients;
     const ingredients = ['bananas', 'chocolate soylent', 'oats', 'ice cubes'];
     const measurements = ['2', '2 scoops', '1/4 cup', '1 cup'];
 
