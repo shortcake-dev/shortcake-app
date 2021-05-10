@@ -10,7 +10,6 @@ import 'package:shortcake_app/graphql/api_client.dart';
 
 class RecipePage extends StatefulWidget {
   final String recipeId;
-  // late final GCompleteRecipeData_recipe recipe;
 
   RecipePage(this.recipeId);
 
