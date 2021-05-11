@@ -10,12 +10,7 @@ import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.var.gql.
 import 'package:shortcake_app/feature/homepage/widgets/recipe_blurb.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
-class ShortcakeHomepage extends StatefulWidget {
-  @override
-  _ShortcakeHomepageState createState() => _ShortcakeHomepageState();
-}
-
-class _ShortcakeHomepageState extends State<ShortcakeHomepage> {
+class ShortcakeHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
