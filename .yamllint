@@ -1,0 +1,13 @@
+extends: default
+
+rules:
+  brackets:
+    # This seems to be the JetBrains default
+    min-spaces-inside: 1
+    max-spaces-inside: 1
+  document-start: disable
+  line-length:
+    # For consistency with dart code
+    max: 80
+  truthy:
+    allowed-values: [ 'true', 'false', 'on' ]

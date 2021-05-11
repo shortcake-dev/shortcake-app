@@ -24,3 +24,9 @@ jobs:
       - run: flutter pub get
       - run: flutter pub run build_runner build
       - run: flutter analyze
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ibiqlik/action-yamllint@v3
+        with:
+          strict: true
