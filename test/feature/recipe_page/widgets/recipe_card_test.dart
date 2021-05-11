@@ -2,11 +2,11 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/feature/homepage/widgets/recipe_card.dart';
+import 'package:shortcake_app/feature/recipe_page/graphql/complete_recipe.data.gql.dart';
+import 'package:shortcake_app/feature/recipe_page/widgets/recipe_card.dart';
 
 class TestRecipeCard extends RecipeCard {
-  TestRecipeCard(GAllRecipesData_recipes recipe) : super(recipe);
+  TestRecipeCard(GCompleteRecipeData_recipe recipe) : super(recipe);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class TestRecipeCard extends RecipeCard {
 }
 
 class TestRecipeStepList extends RecipeStepList {
-  TestRecipeStepList(BuiltList<GAllRecipesData_recipes_steps> steps)
+  TestRecipeStepList(BuiltList<GCompleteRecipeData_recipe_steps> steps)
       : super(steps);
 
   @override
@@ -26,7 +26,7 @@ class TestRecipeStepList extends RecipeStepList {
 
 class TestRecipeIngredientList extends RecipeIngredientList {
   TestRecipeIngredientList(
-      BuiltList<GAllRecipesData_recipes_ingredients> ingredients)
+      BuiltList<GCompleteRecipeData_recipe_ingredients> ingredients)
       : super(ingredients);
 
   @override
@@ -44,7 +44,7 @@ void main() {
     const steps = ['Get bowl', 'Pour oats', 'Consume'];
 
     testWidgets('displays recipe title', (tester) async {
-      final recipe = GAllRecipesData_recipes((b) => b..name = recipeName);
+      final recipe = GCompleteRecipeData_recipe((b) => b..name = recipeName);
 
       final widget = TestRecipeCard(recipe);
       await tester.pumpWidget(widget);
@@ -53,7 +53,7 @@ void main() {
     });
 
     testWidgets('displays recipe description', (tester) async {
-      final recipe = GAllRecipesData_recipes((b) => b
+      final recipe = GCompleteRecipeData_recipe((b) => b
         ..name = recipeName
         ..description = recipeDescription);
 
@@ -64,11 +64,11 @@ void main() {
     });
 
     testWidgets('displays recipe ingredients', (tester) async {
-      final recipe = GAllRecipesData_recipes((b) => b
+      final recipe = GCompleteRecipeData_recipe((b) => b
         ..name = recipeName
         ..ingredients.addAll(List.generate(
           ingredientNames.length,
-          (i) => GAllRecipesData_recipes_ingredients((c) => c
+          (i) => GCompleteRecipeData_recipe_ingredients((c) => c
             ..ingredient.name = ingredientNames[i]
             ..measurement = measurements[i]),
         )));
@@ -81,10 +81,10 @@ void main() {
     });
 
     testWidgets('displays recipe steps', (tester) async {
-      final recipe = GAllRecipesData_recipes((b) => b
+      final recipe = GCompleteRecipeData_recipe((b) => b
         ..name = recipeName
         ..steps.addAll(steps.map(
-          (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
+          (step) => GCompleteRecipeData_recipe_steps((c) => c..text = step),
         )));
 
       final widget = TestRecipeCard(recipe);
@@ -96,14 +96,15 @@ void main() {
   });
 
   group('RecipeIngredientList widget', () {
-    late final BuiltList<GAllRecipesData_recipes_ingredients> recipeIngredients;
+    late final BuiltList<GCompleteRecipeData_recipe_ingredients>
+        recipeIngredients;
     const ingredients = ['bananas', 'chocolate soylent', 'oats', 'ice cubes'];
     const measurements = ['2', '2 scoops', '1/4 cup', '1 cup'];
 
     setUpAll(() {
       recipeIngredients = BuiltList.from([
         for (var i = 0; i < ingredients.length; i++)
-          GAllRecipesData_recipes_ingredients((b) => b
+          GCompleteRecipeData_recipe_ingredients((b) => b
             ..ingredient.name = ingredients[i]
             ..measurement = measurements[i])
       ]);
@@ -129,12 +130,12 @@ void main() {
   });
 
   group('RecipeStepList widget', () {
-    late final BuiltList<GAllRecipesData_recipes_steps> recipeSteps;
+    late final BuiltList<GCompleteRecipeData_recipe_steps> recipeSteps;
     final steps = ['get bread', 'spread peanut butter', 'add banana'];
 
     setUpAll(() {
       recipeSteps = BuiltList.from(steps.map(
-        (step) => GAllRecipesData_recipes_steps((c) => c..text = step),
+        (step) => GCompleteRecipeData_recipe_steps((c) => c..text = step),
       ));
     });
 

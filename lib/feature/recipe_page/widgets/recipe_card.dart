@@ -1,9 +1,9 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
+import 'package:shortcake_app/feature/recipe_page/graphql/complete_recipe.data.gql.dart';
 
 class RecipeCard extends StatelessWidget {
-  final GAllRecipesData_recipes recipe;
+  final GCompleteRecipeData_recipe recipe;
 
   RecipeCard(this.recipe);
 
@@ -24,7 +24,7 @@ class RecipeCard extends StatelessWidget {
 }
 
 class RecipeStepList extends StatelessWidget {
-  final BuiltList<GAllRecipesData_recipes_steps> steps;
+  final BuiltList<GCompleteRecipeData_recipe_steps> steps;
 
   RecipeStepList(this.steps);
 
@@ -43,7 +43,7 @@ class RecipeStepList extends StatelessWidget {
 }
 
 class RecipeIngredientList extends StatelessWidget {
-  final BuiltList<GAllRecipesData_recipes_ingredients> ingredients;
+  final BuiltList<GCompleteRecipeData_recipe_ingredients> ingredients;
 
   RecipeIngredientList(this.ingredients);
 

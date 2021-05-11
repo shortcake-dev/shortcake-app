@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gql_link/gql_link.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.data.gql.dart';
-import 'package:shortcake_app/feature/homepage/graphql/all_recipes.req.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.data.gql.dart';
+import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.req.gql.dart';
 import 'package:shortcake_app/feature/homepage/homepage.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
@@ -32,15 +32,17 @@ class TestHomepage extends StatelessWidget {
 void main() {
   group('Homepage widget', () {
     late MockApi mockApi;
-    late GAllRecipesData result;
+    late GRecipeSummariesData result;
 
     setUpAll(() async {
       mockApi = MockApi();
-      final req = GAllRecipesReq();
-      result = GAllRecipesData(
+      final req = GRecipeSummariesReq();
+      result = GRecipeSummariesData(
         (b) => b
-          ..recipes.add(GAllRecipesData_recipes(
-            (c) => c..name = 'Some recipe',
+          ..recipes.add(GRecipeSummariesData_recipes(
+            (c) => c
+              ..name = 'Some recipe'
+              ..id = 'Some id',
           )),
       );
 
