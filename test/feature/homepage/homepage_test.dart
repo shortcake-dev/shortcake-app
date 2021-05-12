@@ -1,7 +1,6 @@
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gql_link/gql_link.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
 import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.data.gql.dart';
@@ -9,9 +8,7 @@ import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.req.gql.
 import 'package:shortcake_app/feature/homepage/homepage.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
-class MockLink extends Mock implements Link {}
-
-class MockApi extends Mock implements ShortcakeApi {}
+import '../../core/mock.dart';
 
 class TestHomepage extends StatelessWidget {
   final ShortcakeApi shortcakeApi;
