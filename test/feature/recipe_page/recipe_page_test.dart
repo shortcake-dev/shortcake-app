@@ -9,7 +9,7 @@ import 'package:shortcake_app/feature/recipe_page/recipe_page.dart';
 import 'package:shortcake_app/feature/recipe_page/widgets/recipe_card.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
-class MockApi extends Mock implements ShortcakeApi {}
+import '../../core/mock.dart';
 
 class TestRecipePage extends StatelessWidget {
   final ShortcakeApi shortcakeApi;
