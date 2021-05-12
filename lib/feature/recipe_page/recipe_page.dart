@@ -8,23 +8,18 @@ import 'package:shortcake_app/feature/recipe_page/graphql/complete_recipe.var.gq
 import 'package:shortcake_app/feature/recipe_page/widgets/recipe_card.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
-class RecipePage extends StatefulWidget {
+class RecipePage extends StatelessWidget {
   final String recipeId;
 
   RecipePage(this.recipeId);
 
-  @override
-  _RecipePageState createState() => _RecipePageState();
-}
-
-class _RecipePageState extends State<RecipePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Operation(
         client: Provider.of<ShortcakeApi>(context, listen: false),
         operationRequest: GCompleteRecipeReq(
-          (b) => b..vars.recipe_id = widget.recipeId,
+          (b) => b..vars.recipe_id = recipeId,
         ),
         builder: (
           BuildContext context,
