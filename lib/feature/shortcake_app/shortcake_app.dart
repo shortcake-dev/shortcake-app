@@ -1,22 +1,18 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:shortcake_app/feature/homepage/homepage.dart';
-import 'package:shortcake_app/feature/recipe_page/recipe_page.dart';
+import 'package:provider/provider.dart';
+import 'package:shortcake_app/feature/routing/router_delegate.dart';
+import 'package:shortcake_app/graphql/api_client.dart';
 
-class ShortcakeApp extends StatelessWidget {
+class ShortcakeClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Shortcake',
-      routeInformationParser: BeamerRouteInformationParser(),
-      routerDelegate: BeamerRouterDelegate(
-        locationBuilder: SimpleLocationBuilder(
-          routes: {
-            '/': (context) => ShortcakeHomepage(),
-            '/recipes/:recipeId': (context) => RecipePage(
-                context.currentBeamLocation.state.pathParameters['recipeId']!),
-          },
-        ),
+    return Provider<ShortcakeApi>(
+      create: (_) => ShortcakeApi('http://localhost:8000'),
+      child: MaterialApp.router(
+        title: 'Shortcake',
+        routeInformationParser: BeamerRouteInformationParser(),
+        routerDelegate: ShortcakeRouterDelegate(),
       ),
     );
   }
