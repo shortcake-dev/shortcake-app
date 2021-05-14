@@ -8,7 +8,7 @@ import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.req.gql.
 import 'package:shortcake_app/feature/homepage/homepage.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
-import '../../core/mock.dart';
+import '../../test_core/mock.dart';
 
 class TestHomepage extends StatelessWidget {
   final ShortcakeApi shortcakeApi;
