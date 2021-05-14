@@ -11,7 +11,7 @@ class GraphQLWidget<TData, TVars> extends StatefulWidget {
   final Widget Function(TData data) onData;
   final Widget Function(TData? data) onLoading;
   final Widget Function(Object error) onRuntimeError;
-  final Widget Function(LinkException linkException) onLinkError;
+  final Widget Function(LinkException exception) onLinkException;
   final Widget Function(List<GraphQLError> graphQLErrors) onGraphQLErrors;
 
   GraphQLWidget({
@@ -19,19 +19,19 @@ class GraphQLWidget<TData, TVars> extends StatefulWidget {
     required this.onData,
     required this.onLoading,
     this.onRuntimeError = _onRuntimeError,
-    this.onLinkError = _onLinkError,
-    this.onGraphQLErrors = _onGraphQLError,
+    this.onLinkException = _onLinkException,
+    this.onGraphQLErrors = _onGraphQLErrors,
   });
 
   static Widget _onRuntimeError(Object error) {
     return Text('Runtime Error: $error');
   }
 
-  static Widget _onGraphQLError(List<GraphQLError> graphQLErrors) {
-    return Text('GraphQL Error: $graphQLErrors');
+  static Widget _onGraphQLErrors(List<GraphQLError> graphQLErrors) {
+    return Text('GraphQL Errors: $graphQLErrors');
   }
 
-  static Widget _onLinkError(LinkException exception) {
+  static Widget _onLinkException(LinkException exception) {
     return Text('Link Exception: $exception');
   }
 
@@ -59,7 +59,7 @@ class _GraphQLWidgetState<TData, TVars>
         response!;
 
         if (response.linkException != null) {
-          return widget.onLinkError(response.linkException!);
+          return widget.onLinkException(response.linkException!);
         }
         if (response.graphqlErrors != null) {
           return widget.onGraphQLErrors(response.graphqlErrors!);
