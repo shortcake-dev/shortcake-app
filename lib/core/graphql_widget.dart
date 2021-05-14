@@ -10,7 +10,7 @@ class GraphQLWidget<TData, TVars> extends StatefulWidget {
 
   final Widget Function(TData data) onData;
   final Widget Function(TData? data) onLoading;
-  final Widget Function(Object? error) onRuntimeError;
+  final Widget Function(Object error) onRuntimeError;
   final Widget Function(LinkException linkException) onLinkError;
   final Widget Function(List<GraphQLError> graphQLErrors) onGraphQLErrors;
 
@@ -23,7 +23,7 @@ class GraphQLWidget<TData, TVars> extends StatefulWidget {
     this.onGraphQLErrors = _onGraphQLError,
   });
 
-  static Widget _onRuntimeError(Object? error) {
+  static Widget _onRuntimeError(Object error) {
     return Text('Runtime Error: $error');
   }
 
