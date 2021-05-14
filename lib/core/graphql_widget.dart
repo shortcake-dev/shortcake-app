@@ -27,12 +27,12 @@ class GraphQLWidget<TData, TVars> extends StatefulWidget {
     return Text('Runtime Error: $error');
   }
 
-  static Widget _onGraphQLErrors(List<GraphQLError> graphQLErrors) {
-    return Text('GraphQL Errors: $graphQLErrors');
-  }
-
   static Widget _onLinkException(LinkException exception) {
     return Text('Link Exception: $exception');
+  }
+
+  static Widget _onGraphQLErrors(List<GraphQLError> graphQLErrors) {
+    return Text('GraphQL Errors: $graphQLErrors');
   }
 
   @override
