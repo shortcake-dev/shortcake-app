@@ -34,7 +34,9 @@ jobs:
           name: coverage
           path: coverage/
       - run: sudo apt-get --yes install lcov
-      - run: lcov --remove coverage/lcov.info '*.gql.dart' '*.gql.g.dart' -o coverage/lcov.info
+
+      - name: "Ignore generated files in coverage report"
+        run: lcov --remove coverage/lcov.info '*.gql.dart' '*.gql.g.dart' -o coverage/lcov.info
 
       - uses: coverallsapp/github-action@v1.1.2
         with:
