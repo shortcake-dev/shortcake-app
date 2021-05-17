@@ -19,19 +19,20 @@ jobs:
             --coverage \
             --reporter expanded \
             --test-randomize-ordering-seed random
-#      - uses: actions/upload-artifact@v2
-#        with:
-#          name: coverage
-#          path: coverage/
-#
-#  coverage:
-#    runs-on: ubuntu-latest
-#    needs: tests
-#    steps:
-#      - uses: actions/download-artifact@v2
-#        with:
-#          name: coverage
-#          path: coverage/
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
+
+  coverage:
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
       - run: sudo apt-get --yes install lcov
       - run: lcov --remove coverage/lcov.info '*.gql.dart' '*.gql.g.dart' -o coverage/lcov.info
       - uses: coverallsapp/github-action@v1.1.2
