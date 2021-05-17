@@ -32,6 +32,8 @@ jobs:
         with:
           name: coverage
           path: coverage/
+      - run: apt install lcov
+      - run: lcov --remove coverage/lcov.info '*.gql.dart' '*.gql.g.dart' -o coverage/lcov.info
       - uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
