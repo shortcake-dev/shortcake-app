@@ -11,8 +11,8 @@ class ShortcakeClient extends StatelessWidget {
       create: (_) => ShortcakeApi('http://localhost:8000'),
       child: MaterialApp.router(
         title: 'Shortcake',
-        routeInformationParser: BeamerRouteInformationParser(),
-        routerDelegate: ShortcakeRouterDelegate(),
+        routeInformationParser: BeamerParser(),
+        routerDelegate: ShortcakeDelegate(),
       ),
     );
   }
