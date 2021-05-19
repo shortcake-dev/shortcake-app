@@ -20,7 +20,7 @@ dependencies:
   built_collection: ^5.0.0
 
   # Page navigation
-  beamer: ^0.12.4
+  beamer: ^0.13.2
 
 dev_dependencies:
   pedantic: ^1.11.0
