@@ -43,3 +43,6 @@ app.*.map.json
 # Ferry generated code
 *.gql.dart
 *.gql.g.dart
+
+# Coverage results
+/coverage
