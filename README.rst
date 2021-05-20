@@ -6,6 +6,8 @@
   :target: https://github.com/shortcake-dev/shortcake-app/actions/workflows/tests.yml
 .. image:: https://img.shields.io/github/workflow/status/shortcake-dev/shortcake-app/linting/main?label=linting&style=for-the-badge
   :target: https://github.com/shortcake-dev/shortcake-app/actions/workflows/linting.yml
+.. image:: https://img.shields.io/coveralls/github/shortcake-dev/shortcake-app?style=for-the-badge
+  :target: https://coveralls.io/github/shortcake-dev/shortcake-app
 
 Flutter app for the Shortcake_ backend
 
