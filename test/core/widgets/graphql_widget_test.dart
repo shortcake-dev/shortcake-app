@@ -5,12 +5,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gql_exec/gql_exec.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
-import 'package:shortcake_app/core/graphql_widget.dart';
+import 'package:shortcake_app/core/widgets/graphql_widget.dart';
 import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.data.gql.dart';
 import 'package:shortcake_app/feature/homepage/graphql/recipe_summaries.req.gql.dart';
 import 'package:shortcake_app/graphql/api_client.dart';
 
-import '../test_core/mock.dart';
+import '../../test_core/mock.dart';
 
 class TestGraphQLWidget extends StatelessWidget {
   final ShortcakeApi shortcakeApi;
