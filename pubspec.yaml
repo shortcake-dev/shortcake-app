@@ -13,10 +13,10 @@ dependencies:
   provider: ^5.0.0
 
   # GraphQL
-  ferry: ^0.10.1-0.1.nullsafety.0
-  ferry_flutter: ^0.5.1-0.1.nullsafety.0
-  gql_exec: ^0.3.0-nullsafety.2
-  gql_http_link: ^0.4.0-nullsafety.1
+  ferry: ^0.10.4
+  ferry_flutter: ^0.5.4
+  gql_exec: ^0.3.0
+  gql_http_link: ^0.4.0
   built_collection: ^5.0.0
 
   # Page navigation
@@ -29,8 +29,8 @@ dev_dependencies:
   mocktail: ^0.1.1
 
   # For ferry
-  ferry_generator: ^0.4.1-0.1.nullsafety.0
-  build_runner: ^1.12.2
+  ferry_generator: ^0.4.4
+  build_runner: ^2.1.4
 
 flutter:
   uses-material-design: true
